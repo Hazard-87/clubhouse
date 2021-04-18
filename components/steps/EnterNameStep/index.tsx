@@ -1,13 +1,26 @@
+import React from 'react';
 import clsx from 'clsx';
+
 import { WhiteBlock } from '../../WhiteBlock';
 import { Button } from '../../Button';
 import { StepInfo } from '../../StepInfo';
+import { MainContext } from '../../../pages';
 
 import styles from './EnterNameStep.module.scss';
-import React from 'react';
 
 export const EnterNameStep = () => {
+  const [inputValue, setInputValue] = React.useState<string>('');
+  const { onNextStep } = React.useContext(MainContext);
 
+  const nextStepDisabled = !inputValue;
+
+  const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const onClickNextStep = () => {
+    onNextStep();
+  };
 
   return (
     <div className={styles.block}>
@@ -21,9 +34,11 @@ export const EnterNameStep = () => {
           <input
             className="field"
             placeholder="Enter fullname"
+            onChange={handleChangeInput}
+            value={inputValue}
           />
         </div>
-        <Button>
+        <Button disabled={nextStepDisabled} onClick={onClickNextStep}>
           Next
           <img className="d-ib ml-10" src="/static/arrow.svg" />
         </Button>

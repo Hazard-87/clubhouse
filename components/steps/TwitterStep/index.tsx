@@ -1,42 +1,22 @@
+import React from 'react';
 import clsx from 'clsx';
+
 import { WhiteBlock } from '../../WhiteBlock';
 import { Button } from '../../Button';
 import { StepInfo } from '../../StepInfo';
+import { MainContext } from '../../../pages';
 
 import styles from './TwitterStep.module.scss';
-import React from 'react';
-import { MainContext } from '../../../pages';
 
 export const TwitterStep: React.FC = () => {
   const { onNextStep } = React.useContext(MainContext);
-
-  const onClickAuth = () => {
-    const win = window.open(
-      'http://localhost:3001/auth/github',
-      'Auth',
-      'width=500,height=500,status=yes,toolbar=no,menubar=no,location=no',
-    );
-
-    const timer = setInterval(() => {
-      if (win.closed) {
-        clearInterval(timer);
-        onNextStep();
-      }
-    }, 100);
-  };
-
-  React.useEffect(() => {
-    window.addEventListener('message', (data) => {
-      console.log(data);
-    });
-  }, []);
 
   return (
     <div className={styles.block}>
       <StepInfo icon="/static/connect.png" title="Do you want import info from Twitter?" />
       <WhiteBlock className={clsx('m-auto mt-40', styles.whiteBlock)}>
         <div className={styles.avatar}>
-          <b>AD</b>
+          <b>PD</b>
           <svg
             width="100"
             height="100"
@@ -50,10 +30,10 @@ export const TwitterStep: React.FC = () => {
             />
           </svg>
         </div>
-        <h2 className="mb-40">Archakov Dennis</h2>
-        <Button onClick={onClickAuth}>
+        <h2 className="mb-40">Petrushkin Dmitriy</h2>
+        <Button onClick={onNextStep}>
           <img src="/static/twitter.svg" alt="Twitter logo" className={styles.twitterLogo} />
-          Import from GitHub
+          Import from Twitter
           <img className="d-ib ml-10" src="/static/arrow.svg" />
         </Button>
         <div className="link mt-20 cup d-ib">Enter my info manually</div>

@@ -1,12 +1,24 @@
+import React from 'react';
 import clsx from 'clsx';
+import NumberFormat from 'react-number-format';
+
 import { WhiteBlock } from '../../WhiteBlock';
 import { Button } from '../../Button';
 import { StepInfo } from '../../StepInfo';
+import { MainContext } from '../../../pages';
 
 import styles from './EnterPhoneStep.module.scss';
 
+type InputValueState = {
+  formattedValue: string;
+  value: string;
+};
 
-export const EnterPhoneStep = () => {
+export const EnterPhoneStep: React.FC = () => {
+  const { onNextStep } = React.useContext(MainContext);
+  const [values, setValues] = React.useState<InputValueState>({} as InputValueState);
+
+  const nextDisabled = !values.formattedValue || values.formattedValue.includes('_');
 
   return (
     <div className={styles.block}>
@@ -22,10 +34,12 @@ export const EnterPhoneStep = () => {
             className="field"
             format="+# (###) ###-##-##"
             mask="_"
+            value={values.value}
             placeholder="+7 (999) 333-22-11"
+            onValueChange={({ formattedValue, value }) => setValues({ formattedValue, value })}
           />
         </div>
-        <Button>
+        <Button disabled={nextDisabled} onClick={onNextStep}>
           Next
           <img className="d-ib ml-10" src="/static/arrow.svg" />
         </Button>
