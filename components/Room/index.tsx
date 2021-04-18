@@ -1,17 +1,19 @@
+import React from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
-import React from 'react';
 import { Button } from '../Button';
 
 import styles from './Room.module.scss';
 
+interface RoomProps {
+    title: string
+}
 
-
-export const Room = () => {
+export const Room: React.FC<RoomProps> = ({title}) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={clsx(styles.wrapper, 'container')}>
       <div className="d-flex align-items-center justify-content-between">
-        <h2>title</h2>
+        <h2>{title}</h2>
         <div className={clsx('d-flex align-items-center', styles.actionButtons)}>
           <Link href="/rooms">
             <Button color="gray" className={styles.leaveButton}>
@@ -24,9 +26,9 @@ export const Room = () => {
 
       <div className="users">
         {/* {isLoading && <div className="loader"></div>} */}
-        {/* {users.map((obj) => (
-              <User {...obj} />
-            ))} */}
+        {/*{users.map((obj) => (*/}
+        {/*      <User {...obj} />*/}
+        {/*    ))}*/}
       </div>
     </div>
   );

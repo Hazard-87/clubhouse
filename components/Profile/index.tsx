@@ -6,6 +6,7 @@ import {Avatar} from '../Avatar';
 import {Button} from '../Button';
 
 import styles from './Profile.module.scss';
+import {BackButton} from "../BackButton";
 
 interface ProfileProps {
     fullname: string
@@ -17,14 +18,9 @@ interface ProfileProps {
 export const Profile: React.FC<ProfileProps> = ({fullname, username, avatarUrl, about}) => {
     return (
         <>
-            <Link href="/rooms">
-                <a>
-                    <div className="d-flex mb-30">
-                        <img src="/static/back-arrow.svg" alt="Back" className='mr-10'/>
-                        <h3> Back</h3>
-                    </div>
-                </a>
-            </Link>
+            <div className='container'>
+                <BackButton href={'/rooms'} title={'Back'}/>
+            </div>
             <div className='d-flex align-items-center'>
                 <div className='d-flex align-items-center'>
                     < Avatar
