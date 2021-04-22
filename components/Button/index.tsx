@@ -10,13 +10,19 @@ const colors = {
 };
 
 interface ButtonProps {
-  disabled?: boolean
-  color?: keyof typeof colors
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  className?: string
+  disabled?: boolean;
+  color?: keyof typeof colors;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  className?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({ children, disabled, color, onClick, className }) => {
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  disabled,
+  color,
+  onClick,
+  className,
+}) => {
   return (
     <button
       onClick={onClick}

@@ -1,20 +1,19 @@
 import React from 'react';
 import clsx from 'clsx';
 import NumberFormat from 'react-number-format';
-
 import { WhiteBlock } from '../../WhiteBlock';
 import { Button } from '../../Button';
 import { StepInfo } from '../../StepInfo';
-import { MainContext } from '../../../pages';
 
 import styles from './EnterPhoneStep.module.scss';
+import { MainContext } from '../../../pages';
 
 type InputValueState = {
   formattedValue: string;
   value: string;
 };
 
-export const EnterPhoneStep: React.FC = () => {
+export const EnterPhoneStep = () => {
   const { onNextStep } = React.useContext(MainContext);
   const [values, setValues] = React.useState<InputValueState>({} as InputValueState);
 
@@ -34,8 +33,8 @@ export const EnterPhoneStep: React.FC = () => {
             className="field"
             format="+# (###) ###-##-##"
             mask="_"
-            value={values.value}
             placeholder="+7 (999) 333-22-11"
+            value={values.value}
             onValueChange={({ formattedValue, value }) => setValues({ formattedValue, value })}
           />
         </div>

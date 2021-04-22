@@ -1,10 +1,9 @@
-import React from 'react';
-
 import { WhiteBlock } from '../../WhiteBlock';
 import { Button } from '../../Button';
-import { MainContext } from '../../../pages';
 
 import styles from './WelcomeStep.module.scss';
+import { MainContext } from '../../../pages';
+import React from 'react';
 
 export const WelcomeStep: React.FC = () => {
   const { onNextStep } = React.useContext(MainContext);
@@ -17,7 +16,7 @@ export const WelcomeStep: React.FC = () => {
       </h3>
       <p>
         We’re working hard to get Clubhouse ready for everyone! While we wrap up the finishing
-        youches, we’re adding people gradually to make sure nothing breaks.
+        youches, we’re adding people gradually to make sure nothing breaks :)
       </p>
       <div>
         <Button onClick={onNextStep}>

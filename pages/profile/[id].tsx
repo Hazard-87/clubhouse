@@ -1,20 +1,23 @@
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import React from 'react';
-import {Profile} from "../../components/Profile";
-import {Header} from "../../components/Header";
+import { Header } from '../../components/Header';
+import { Profile } from '../../components/Profile';
 
 export default function ProfilePage() {
-    const router = useRouter();
-    const {id} = router.query;
+  const router = useRouter();
+  const { id } = router.query;
 
-    return (
-        <>
-            <Header/>
-            <div className="container">
-                <Profile fullname={'Petrushkin Dmitriy'} username={"hazard_87"}
-                         avatarUrl={'http://www.youloveit.ru/uploads/posts/2020-04/1586360148_youloveit_ru_bill_gravity_falls_na_avu11.jpg'}
-                         about={'Я начинающий фронтенд разработчик'}/>
-            </div>
-        </>
-    );
+  return (
+    <>
+      <Header />
+      <div className="container mt-30">
+        <Profile
+          avatarUrl="https://sun2-3.userapi.com/s/v1/if1/CAR1Aao3yIica7xq77xIIMMTn29CME-cE5JSJBc8OTNVt29JQjnhR0ZsX_9IO-AzgwVbfgB6.jpg?size=200x0&quality=96&crop=138,44,1048,1048&ava=1"
+          fullname="Archakov Dennis"
+          username="archakov"
+          about="Test info"
+        />
+      </div>
+    </>
+  );
 }

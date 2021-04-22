@@ -1,23 +1,22 @@
 import React from 'react';
 import clsx from 'clsx';
-
 import { WhiteBlock } from '../../WhiteBlock';
 import { Button } from '../../Button';
 import { StepInfo } from '../../StepInfo';
 import { Avatar } from '../../Avatar';
-import { MainContext } from '../../../pages';
 
 import styles from './ChooseAvatarStep.module.scss';
+import { MainContext } from '../../../pages';
 
 export const ChooseAvatarStep: React.FC = () => {
   const { onNextStep } = React.useContext(MainContext);
-  const inputFileRef = React.useRef(null);
   const [avatarUrl, setAvatarUrl] = React.useState<string>(
-    'http://www.youloveit.ru/uploads/posts/2020-04/1586360148_youloveit_ru_bill_gravity_falls_na_avu11.jpg',
+    'https://sun2-3.userapi.com/s/v1/if1/CAR1Aao3yIica7xq77xIIMMTn29CME-cE5JSJBc8OTNVt29JQjnhR0ZsX_9IO-AzgwVbfgB6.jpg?size=200x0&quality=96&crop=138,44,1048,1048&ava=1',
   );
+  const inputFileRef = React.useRef<HTMLInputElement>(null);
 
-  const handleChangeImage = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const file = event.target.files[0];
+  const handleChangeImage = (event: Event): void => {
+    const file = (event.target as HTMLInputElement).files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setAvatarUrl(imageUrl);
@@ -34,7 +33,7 @@ export const ChooseAvatarStep: React.FC = () => {
     <div className={styles.block}>
       <StepInfo
         icon="/static/celebration.png"
-        title="Okay, Petrushkin Dmitriy!"
+        title="Okay, Archakov Dennis!"
         description="How’s this photo?"
       />
       <WhiteBlock className={clsx('m-auto mt-40', styles.whiteBlock)}>
